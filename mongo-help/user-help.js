@@ -178,9 +178,11 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let s = await db.get().collection(Collection.signup).find().toArray()
             let su = await db.get().collection(Collection.subscribe).find().toArray()
+            let sug = await db.get().collection(Collection.suggest).find().toArray()
             var response = {}
             response.s= s
             response.su = su
+            response.sug=sug
             resolve(response)
         })
     }
