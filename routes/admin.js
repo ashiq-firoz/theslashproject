@@ -150,9 +150,10 @@ router.get('/crea',(req,res)=>{
   userHelp.getusers().then((response)=>{
     var users = response.s
     var s = response.su
+    var su = response.sug
   //  console.log(users);
   //  console.log(response);
-    res.render('admin/crea',{users,s})
+    res.render('admin/crea',{users,s,su})
   })
 })
 module.exports = router;
