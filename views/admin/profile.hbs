@@ -199,8 +199,6 @@
                 <a style="width: 3rem;height: 3rem;" href="https://www.instagram.com/e_d_i__t_h"><img
                         src="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png"
                         class="img-fluid" alt="instagram"></a>
-                <a style="width: 3rem;height: 3rem;" href="https://www.facebook.com/" class="mr-1"><img
-                        src="https://www.facebook.com/images/fb_icon_325x325.png" class="img-fluid" alt="facebook"></a>
                 <a style="width: 3rem;height: 3rem;" href="https://github.com/ashiq-firoz" class="mr-1"><img
                         src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                         class="img-fluid" alt="github"></a>
@@ -230,7 +228,7 @@
                 <a class="btn btn-info btn-xl js-scroll-trigger" data-toggle="modal" data-target="#aboutcreator"> MORE
                     ABOUT THE CREATOR </a>
 
-                <form>
+                <form action="/suggest" method="POST">
                     <div class="form-group">
                         <br>
                         <label for="exampleFormControlInput1">Are you a critic or an idealist...</label>
@@ -265,21 +263,3 @@
         </div>
     </div>
 </footer>
-<script>
-    $("#submit-form").submit((e) => {
-        e.preventDefault()
-        $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbw6fQYVXb5HAPLyBaO6nc1-6KD3dC40StjnkgNNu5aU3ZP6LW0S/exec",
-            data: $("#submit-form").serialize(),
-            method: "post",
-            success: function (response) {
-                alert("Form submitted successfully")
-                window.location.reload()
-            },
-            error: function (err) {
-                alert("Something Error")
-
-            }
-        })
-    })
-</script>
