@@ -8,5 +8,5 @@ module.exports={
     coresult:'resultcount',
     coanswer:'answercount',
     cotest:'testcount',
-    
+    suggest:'suggestions',
 }
