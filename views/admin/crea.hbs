@@ -54,5 +54,22 @@
      </tbody>
      </table>
     </div>
+     <div class="col-12" style="overflow-y: auto;height: 10rem;">
+         <h2>Suggestions</h2>
+           <table class="table table-dark">
+        <thead>
+             <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Message</th>
+      </tr>
+      <tbody>
+          {{#each su}}
+          <tr>
+              <td>{{this.email}}</td>
+      <td>{{this.message}}</td>
+          </tr>
+          {{/each}}
+      </tbody>
+     </div>
     </div>
 </section>
