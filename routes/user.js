@@ -110,6 +110,13 @@ router.get('/logout', (req, res) => {
     req.session.destroy()
     res.redirect('/')
 })
+
+router.post('/suggest',(req,res)=>{
+    userHelp.addsugest(req.body).then((response)=>{
+      res.redirect('/')
+    })
+  })
+
 router.post('/profile', (req, res) => {  //guest profile
     var data = req.body
     var username = req.body.username
