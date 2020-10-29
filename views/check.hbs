@@ -1,0 +1,30 @@
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">The Slash Project</span>
+    </nav>
+</header>
+<section>
+    <div class="col-md-6 m-auto">
+        <form action="/demo" method="post">
+            {{#if d}}
+            <div class="alert alert-danger col-9" style="margin-top: 1px;" id='demo'>Your have entered the wrong code.
+            </div>
+            {{/if}}
+            <div class="form-group">
+                <label for="exampleInputPassword1">Organizer</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name='user' value="{{v}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Test name</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name='test'
+                    value="{{sub}}">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Question code</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name='code'>
+            </div>
+            <button type="submit" class="btn btn-success rounded float-right mt-1">Submit</button>
+        </form>
+    </div>
+</section>

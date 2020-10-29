@@ -1,0 +1,36 @@
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            THE SLASH PROJECT 
+        </a>
+    </nav>
+</header>
+
+<section style="background-color: white;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <textarea name="du" id="du" cols="1" rows="1" style="height: 1px;" class="invisible">{{userda.v}}</textarea>
+            <form action="/edit?user={{userda.v}}&test={{userda.b}}" method="post" role="form" enctype="multipart/form-data">
+               <input type="text" name="subject" class="invisible" id="subject" style="height:1px;width: 1px;"> <input style="width: 1px;height: 1px;" class="invisible" type="password" name="code" id="code">
+            <input type="text" name="username" id="user" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="year" id="year" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="mon" id="mon" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="day" id="day" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="ho" id="ho" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="min" id="min" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="sec" id="sec" style="height: 1px;width: 1px;" class="invisible">
+                <div class="form-group">
+                    <input type="text" id="tt" class='invisible form-control' name='questions'>
+                    {{#if edit}}
+                    <label for="questions" style="margin-left: 2rem;font-size: larger;"><b>Start editing your question</b></label>
+                    {{else}}
+                    <label for="questions" style="margin-left: 2rem;font-size: larger;"><b>Click below and start typing
+                            your questions...</b></label>
+                    {{/if}}
+                    {{#each question}}
+                    <div contenteditable="true" id='text' class="pl-1"
+                        style="height: 25rem;background-color:#2c3e50;color:white;overflow-y: auto; font-size: large;">
+                        {{this.questions}}
+                    </div>
+                    {{/each}}
+                    <button type="submit" class="btn btn-primary mt-4" onclick="return confirm("Editing completed....")" onclick="sbmt()">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>

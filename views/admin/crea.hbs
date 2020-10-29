@@ -1,0 +1,58 @@
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">The Slash Project </a>
+    </nav>
+</header>
+
+<section>
+    <div  class="row container-fluid">
+    <div style="overflow-y: auto;height: 15rem;" class="col-12">
+        <h2>User details</h2>
+    <table class="table table-dark">
+        <thead>
+     <tr>
+      <th scope="col">NO:</th>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col">Org status</th>
+      </tr>
+     </thead>
+     <tbody>
+         {{#each users}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      <td>{{this.username}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.org}}</td>
+      </tr>
+      {{/each}}
+     </tbody>
+    </table>
+    </div>
+    <div class="col-12" style="overflow-y: auto;height: 15rem;">
+        <h2>Subscription details</h2>
+         <table class="table table-dark">
+        <thead>
+     <tr>
+      <th scope="col">NO:</th>
+      <th scope="col">User</th>
+      <th scope="col">Date</th>
+      <th scope="col">no:</th>
+      <th scope="col">test</th>
+      </tr>
+     </thead>
+     <tbody>
+         {{#each s}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      <td>{{this.username}}</td>
+      <td>{{this.date}}</td>
+      <td>{{this.n}}</td>
+      <td>{{this.t}}</td>
+      </tr>
+      {{/each}}
+     </tbody>
+     </table>
+    </div>
+    </div>
+</section>

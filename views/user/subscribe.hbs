@@ -1,0 +1,62 @@
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">The Slash Project </a>
+    </nav>
+</header>
+<div class="row container">
+    <div class="col-9 m-auto mr-0">
+        <br>
+            <h2>Select your required plan</h2><br>
+             <h2><u>Our Plans..</u></h2>
+             <ul>
+                 {{#if org}}
+                 <li>
+                     <a href="/admin/pay?user={{u}}&value=1800&limit=1&n=16000&t=80" class="btn btn-warning rounded m-2"> <b>80 tests per month (200*80 participants)</b> <br> Price:Rs 1800 <strike>2200</strike></a>
+                 </li>
+                 <li>
+                    <a href="/admin/pay?user={{u}}&value=2000&limit=1&n=22500&t=90" class="btn btn-warning rounded m-2"> <b>90 tests per month (250*90 participants)</b> <br> Price:Rs 2000 <strike>2500</strike></a>
+                 </li>
+                 <li> 
+                    <a href="/admin/pay?user={{u}}&value=5800&limit=6&n=100000&t=500" class="btn btn-warning rounded m-2"> <b>500 tests for 6 months (200*500 participants)</b> <br> Price:Rs 5800 </a>
+                 </li>
+                 <li>
+                     <a href="/admin/pay?user={{u}}&value=8200&limit=6&n=135000&t=540" class="btn btn-warning rounded m-2"><b>540 tests for 6 months (250*540 participants)</b> <br> Price:Rs 8200</a>
+                 </li>
+                {{else}}
+                <li>
+                     <a href="/admin/pay?user={{u}}&value=24&limit=1&n=40&t=2" class="btn btn-warning rounded m-2"> <b>2 tests per month (20*2 participants)</b> <br> Price:Rs 24</a>
+                 </li>
+                 <li>
+                    <a href="/admin/pay?user={{u}}&value=60&limit=1&n=125&t=5" class="btn btn-warning rounded m-2"> <b>5 tests per month (25*5 participants)</b> <br> Price:Rs 60</a>
+                 </li>
+                 <li>
+                    <a href="/admin/pay?user={{u}}&value=800&limit=6&n=240&t=12" class="btn btn-warning rounded m-2"> <b>12 tests for 6 months (20*12 participants)</b> <br> Price:Rs 800 <strike>1500</strike></a>
+                 </li>
+                 <li>
+                     <a href="/admin/pay?user={{u}}&value=1500&limit=6%n=625&t=25" class="btn btn-warning rounded m-2"><b>25 tests for 6 months (25*25 participants per test)</b> <br> Price:Rs 1500 <strike>1800</strike></a>
+                 </li>
+                 {{/if}}
+                 <li>
+                     <a class="btn btn-info rounded" href="mailto:theslashproject000@gmail.com">Want a different option.. click to mail us. Responds within 12 hours.</a>
+                 </li>
+             </ul>        
+    </div>
+    <div class="col">
+        <h2>Want to know how we set the price??</h2>
+        <br>
+        <h4>Here is it...</h4>
+        <br>
+        <ul>
+            <li>We consider price paper used (both answer sheet and question paper) to be rupees 7, for each participant.</li><br>
+           {{#if org}}
+            <li>So for 200 participants, it's 200 times 7 = 1400 rupees</li><br>
+           {{else}}
+           <li>So for 20 participants, it's 20 times 7 = 140 rupees</li><br>
+           {{/if}}
+           <li>Now check our subscription price... Is it cheaper..</li>
+        </ul>
+    </div>
+</div>
+<br>
+<br>
+

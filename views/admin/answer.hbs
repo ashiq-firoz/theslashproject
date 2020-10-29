@@ -1,0 +1,128 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">The Slash Project</span>
+</nav>
+</header>
+<div class="container-fluid">
+    <h1 id="ff" class="col"> <center>Answers..</center></h1>
+    <input type="text"  id="answers" value="{{answer.answers}}" style="width: 1px;height: 1px;" class="invisible">
+    <button type="submit" id="bt" class="btn btn-success rounded" onclick="nex()">next</button>
+    <button type="submit" id="btt" class="btn btn-warning rounded mr-1 invisibe" onclick="bac()">Back</button>
+    <div class="btn-group">
+      <span class="badge badge-info">Name</span> <button class="btn-primary rounded" disabled="disabled" id="name">{{answer.name}}</button>
+      <span class="badge badge-info">Roll/Id</span> <button class="btn-primary rounded" disabled="disabled" id="roll">{{answer.rollno}}</button>
+      <span class="badge badge-info">Cheating Status: </span><button class="btn-primary rounded" disabled="disabled" id="copy">{{answer.copy}}</button>
+    </div>
+    <br><br>
+     <h3 class="col">Click below to correct the answers</h3>
+      <div class="row mt-2">
+        <div class="col-9">
+           <div  class="pl-1 ml-1 border rounded" id="ansedit" style="overflow-y: auto;height: 24rem;">
+               <br>
+               <br><br>
+              <center> <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span></center>
+           </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="tttt">Enter the total marks below..</label>
+             <input type="text" class="form-control" id="total"  placeholder="Enter the marks">
+              <button type="submit" class="btn-success rounded  ml-2 mt-2" onclick="submtt()">Add to results</button>
+          </div>
+        </div>
+    </div>
+   
+</div>
+
+<input type="text"  id="f" value="{{finis}}" style="width: 1px;height: 1px;" class="invisible">
+<input type="text"  id="i" value="{{i}}" style="width: 1px;height: 1px;" class="invisible">
+<input type="text"  id="l" value="{{l}}" style="width: 1px;height: 1px;" class="invisible">
+<input type="text"  id="v" value="{{v}}" style="width: 1px;height: 1px;" class="invisible">
+<input type="text"  id="b" value="{{b}}" style="width: 1px;height: 1px;" class="invisible">
+
+<script>
+    document.getElementById('ansedit').innerHTML =document.getElementById('answers').value
+    if(document.getElementById('f').value=='true'){
+        document.getElementById('bt').disabled ='disabled'
+        document.getElementById('btt').disabled ='disabled'
+        alert("There is only one answer ")
+    }
+</script>
+
+<script>
+    function nex(){
+        document.getElementById('btt').disabled =''
+        var i = document.getElementById('i').value
+        var v = document.getElementById('v').value
+        var b = document.getElementById('b').value
+        console.log('next')
+        $.ajax({
+            url:'/admin/answer?sub='+b+'&user='+v+'&id='+i+'&bac=yt',
+            method:'get',
+            success:(response)=>{
+                document.getElementById('ansedit').innerHTML = response.response.answers
+                document.getElementById('i').value=response.i
+                if(response.finish){
+                    document.getElementById('bt').disabled ='disabled'
+                    
+                }
+                document.getElementById('name').innerHTML = response.response.name
+                document.getElementById('roll').innerHTML = response.response.rollno
+                document.getElementById('copy').innerHTML = response.response.copy
+            }
+        })
+    }
+</script>
+<script>
+    function bac(){
+        document.getElementById('bt').disabled=''
+        var i = document.getElementById('i').value
+        var v = document.getElementById('v').value
+        var b = document.getElementById('b').value
+        console.log('back')
+        $.ajax({
+            url:'/admin/answer?sub='+b+'&user='+v+'&id='+i+'&bac=t',
+            method:'get',
+            success:(response)=>{
+                 document.getElementById('ansedit').innerHTML = response.response.answers
+                document.getElementById('i').value=response.i
+                if(response.i==1){
+                     document.getElementById('btt').disabled ='disabled'
+                }
+                else{
+                    document.getElementById('btt').disabled =''
+                }
+                if(response.finish){
+                    document.getElementById('bt').disabled ='disabled'
+                    alert("This is the last answer")
+                }
+                else{
+                     document.getElementById('bt').disabled =''
+                }
+                document.getElementById('name').innerHTML = response.response.name
+                document.getElementById('roll').innerHTML = response.response.rollno
+                document.getElementById('copy').innerHTML = response.response.copy
+            }
+        })
+    }
+</script>
+<script>
+    function submtt(){
+        var m = document.getElementById('total').value
+        var s = document.getElementById('b').value
+        var u = document.getElementById('v').value
+        var n = document.getElementById('name').innerHTML
+        var r =  document.getElementById('roll').innerHTML
+        console.log("submiting")
+        $.ajax({
+            url:'/admin/addresult?total='+m+'&subject='+s+'&roll='+r+'&name='+n+'&user='+u,
+            method:'get',
+            success:(response)=>{
+                if(response){
+                    alert("submitted")
+                }
+            }
+        })
+    }
+</script>

@@ -1,0 +1,67 @@
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">The Slash Project </a>
+    </nav>
+</header>
+<div class="row">
+    <div class="col-md-6 m-auto">
+        <div class="container mt-5 pl-5">
+            <h2 class="text-centre">Login</h2>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    {{#if logerr}}
+                     <div class="alert alert-danger col-9"  style="margin-top: 1px;" id='demo' >Your username or password is wrong</div>
+                    {{/if}}
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" name='username'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name='password'>
+                </div>
+                <a class="btn btn-info"  data-toggle="modal" data-target="#send">Forgot password??</a>
+                 <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+            <a href='/signup' style="color: blue;">create an account</a>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="modal fade" id="send" tabindex="-1" role="dialog" aria-labelledby="Attent" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ok we will send you a mail..</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/send" method="POST">
+                    <div class="form-group">
+                        <label for="testid">Your username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container">
+        <div class="small text-center text-muted">
+            Follow Us On
+            <p>insta twitter facebook lnkkd</p>
+
+            Copyright © 2020 @e_d_i__t_h. Designed &amp; Developed By AF
+           
+            </div>
+    </div>
+</footer>

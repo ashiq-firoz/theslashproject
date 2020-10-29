@@ -1,0 +1,465 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      THE SLASH PROJECT 
+    </a>
+  </nav>
+</header>
+
+<section style="background-color:#49637e;;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      {{#if edit}}
+      {{#each resp}}
+      <br>
+      <form action="/edit" method="post" role="form" enctype="multipart/form-data">
+        <input type="text" id="tt" name="questions" value="{{questions}}" class="invisible"
+          style="height: 1px;width: 1px;">
+        <button type="button" class="btn btn-warning mt-1 rounded col-2" data-toggle="modal" data-target="#Modal">Add
+          Question
+          Details</button>
+        <a class="btn btn-info rounded ml-1 mt-1" onclick="addt()">add answerbox</a>
+        <button type="submit" class="btn btn-primary mt-1 ml-1 " onclick="sbmt()">Submit</button>
+        <button type="button" class="btn btn-primary mt-1 ml-1 " data-toggle="modal" data-target="#exampleModalCenter">
+          Add Figure
+        </button>
+        <button type="button" class="btn btn-primary mt-1 ml-1 " data-toggle="modal" data-target="#pic">
+          Add a picture
+        </button>
+        <button type="button" class="btn btn-info mt-1 ml-1 " data-toggle="modal" data-target="#symbols">
+          More symbols
+        </button>
+        <button type="button" class="btn btn-dark mt-1 ml-1 " data-toggle="modal" data-target="#table">
+          Add table
+        </button>
+        <button type="button" class="btn btn-dark mt-1 ml-1 " data-toggle="modal" data-target="#language">
+          Change keyboard language
+        </button>
+        <br>
+        <input type="text" name="subject" class="invisible" id="subject" style="height:1px;width: 1px;"
+          value="{{this.subject}}"> <input style="width: 1px;height: 1px;" class="invisible" type="password" name="code"
+          id="code" value="{{this.code}}">
+        <input type="text" name="username" id="user" style="height: 1px;width: 1px;" class="invisible"
+          value="{{this.username}}"><input type="text" name="year" id="year" value="{{this.year}}"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="mon" id="mon" value="{{this.mon}}"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="day" id="day" value="{{this.day}}"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" value="{{this.ho}}" name="ho" id="ho"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="min" id="m" value="{{this.min}}"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="sec" id="sec" value="{{this.sec}}"
+          style="height: 1px;width: 1px;" class="invisible">
+        <input type="text" name="year1" id="yee" style="height: 1px;width: 1px;" value="{{this.year1}}"
+          class="invisible"><input type="text" name="mon1" value="{{this.mon1}}" id="mmm"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="day1" value="{{this.day1}}"
+          id="dyy" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="ho1" id="hhh"
+          value="{{this.ho1}}" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="min1"
+          id="miii" value="{{this.min1}}" style="height: 1px;width: 1px;" class="invisible">
+        <div contenteditable="true" class="col-12" style="background-color:beige;height: 25rem;;" id="text">
+        </div>
+      </form>
+      {{/each}}
+      {{else}}
+      <textarea name="du" id="du" cols="1" rows="1" style="height: 1px;" class="invisible">{{user.username}}</textarea>
+      <form action="/admin/questions" method="post" role="form" enctype="multipart/form-data">
+        <input type="text" name="subject" class="invisible" id="subject" style="height:1px;width: 1px;"> <input
+          style="width: 1px;height: 1px;" class="invisible" type="password" name="code" id="code">
+        <input type="text" name="username" id="user" style="height: 1px;width: 1px;" class="invisible"
+          value="{{user.username}}"><input type="text" name="year" id="year" style="height: 1px;width: 1px;"
+          class="invisible"><input type="text" name="mon" id="mon" style="height: 1px;width: 1px;"
+          class="invisible"><input type="text" name="day" id="day" style="height: 1px;width: 1px;"
+          class="invisible"><input type="text" name="ho" id="ho" style="height: 1px;width: 1px;"
+          class="invisible"><input type="text" name="min" id="m" style="height: 1px;width: 1px;"
+          class="invisible"><input type="text" name="sec" id="sec" style="height: 1px;width: 1px;" class="invisible">
+        <input type="text" name="year1" id="yee" style="height: 1px;width: 1px;" class="invisible"><input type="text"
+          name="mon1" id="mmm" style="height: 1px;width: 1px;" class="invisible"><input type="text" name="day1" id="dyy"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="ho1" id="hhh"
+          style="height: 1px;width: 1px;" class="invisible"><input type="text" name="min1" id="miii"
+          style="height: 1px;width: 1px;" class="invisible">
+
+        <button type="button" class="btn btn-warning mt-1 rounded col-2" data-toggle="modal" data-target="#Modal">Add
+          Question
+          Details</button>
+        <a class="btn btn-info rounded ml-1 mt-1" onclick="addt()">add answerbox</a>
+        <button type="submit" class="btn btn-primary mt-1 ml-1 " onclick="sbmt()">Submit</button>
+        <button type="button" class="btn btn-primary mt-1 ml-1 " data-toggle="modal" data-target="#exampleModalCenter">
+          Add Figure
+        </button>
+        <button type="button" class="btn btn-primary mt-1 ml-1 " data-toggle="modal" data-target="#pic">
+          Add a picture
+        </button>
+        <button type="button" class="btn btn-info mt-1 ml-1 " data-toggle="modal" data-target="#symbols">
+          More symbols
+        </button>
+        <button type="button" class="btn btn-dark mt-1 ml-1 " data-toggle="modal" data-target="#table">
+          Add table
+        </button>
+        <button type="button" class="btn btn-dark mt-1 ml-1 " data-toggle="modal" data-target="#language">
+          Change keyboard language
+        </button>
+        <div class="form-group">
+          <input type="text" id="tt" class='invisible form-control' name='questions' style="width: 1px;height: 1px;">
+          <div contenteditable="true" id='text' class="pl-1 col-12"
+            style="overflow-y: auto; font-size: large;background-color:beige;height: 22rem;">
+            <h3 style="text-align: center;">Institute name</h3>
+            <h4 style="text-align: center;">Subject name</h4>
+            <h4 style="text-align: left;">Grade/Class:</h4>
+            <h4 style="text-align: end;" class="mr-4">Total marks:</h4>
+          </div>
+        </div>
+      </form>
+      {{/if}}
+      <div class="form-group container-fluid">
+        <div class="row btn-group-horizontal m-1">
+          <button class="col-1 btn-danger rounded" id="1" value="1" onclick="key(id,'text')">1</button>
+          <button class="col-1 btn-danger rounded" id="2" value="2" onclick="key(id,'text')">2</button>
+          <button class="col-1 btn-danger rounded" id="3" value="3" onclick="key(id,'text')">3</button>
+          <button class="col-1 btn-info rounded" id="4" value="4" onclick="key(id,'text')">4</button>
+          <button class="col-1 btn-info rounded" id="5" value="5" onclick="key(id,'text')">5</button>
+          <button class="col-1 btn-info rounded" id="6" value="6" onclick="key(id,'text')">6</button>
+          <button class="col-1 btn-success rounded" id="7" value="7" onclick="key(id,'text')">7</button>
+          <button class="col-1 btn-success rounded" id="8" value="8" onclick="key(id,'text')">8</button>
+          <button class="col-1 btn-success rounded" id="9" value="9" onclick="key(id,'text')">9</button>
+          <button class="col-1 btn-dark rounded" id="0" value="0" onclick="key(id,'text')">0</button>
+          <button class="col-1 btn-dark rounded" id="_" value="_" onclick="key(id,'text')">_</button>
+          <button class="col-1 btn-dark rounded" id="=" value="=" onclick="key(id,'text')">=</button>
+        </div>
+        <div class="row btn-group-horizontal m-1">
+          <button class="col-1 btn-danger rounded" id="q" value="q" onclick="key(id,'text')">q</button>
+          <button class="col-1 btn-danger rounded" id="w" value="w" onclick="key(id,'text')">w</button>
+          <button class="col-1 btn-danger rounded" id="e" value="e" onclick="key(id,'text')">e</button>
+          <button class="col-1 btn-danger rounded" id="r" value="r" onclick="key(id,'text')">r</button>
+          <button class="col-1 btn-info rounded" id="t" value="t" onclick="key(id,'text')">t</button>
+          <button class="col-1 btn-info rounded" id="y" value="y/" onclick="key(id,'text')">y</button>
+          <button class="col-1 btn-info rounded" id="u" value="u" onclick="key(id,'text')">u</button>
+          <button class="col-1 btn-success rounded" id="i" value="i" onclick="key(id,'text')">i</button>
+          <button class="col-1 btn-success rounded" id="o" value="o" onclick="key(id,'text')">o</button>
+          <button class="col-1 btn-success rounded" id="p" value="p" onclick="key(id,'text')">p</button>
+          <button class="col-1 btn-dark rounded" id="[" value="[" onclick="key(id,'text')">[</button>
+          <button class="col-1 btn-dark rounded" id="]" value="]" onclick="key(id,'text')">]</button>
+        </div>
+        <div class="row btn-group-horizontal m-1">
+          <button class="col-1 btn-danger rounded" id="+" value="+" onclick="key(id,'text')">+</button>
+          <button class="col-1 btn-danger rounded" id="a" value="a" onclick="key(id,'text')">a</button>
+          <button class="col-1 btn-danger rounded" id="s" value="s" onclick="key(id,'text')">s</button>
+          <button class="col-1 btn-danger rounded" id="d" value="d" onclick="key(id,'text')">d</button>
+          <button class="col-1 btn-danger rounded" id="f" value="f" onclick="key(id,'text')">f</button>
+          <button class="col-1 btn-info rounded" id="g" value="g" onclick="key(id,'text')">g</button>
+          <button class="col-1 btn-info rounded" id="h" value="h" onclick="key(id,'text')">h</button>
+          <button class="col-1 btn-info rounded" id="j" value="j" onclick="key(id,'text')">j</button>
+          <button class="col-1 btn-success rounded" id="k" value="k" onclick="key(id,'text')">k</button>
+          <button class="col-1 btn-success rounded" id="l" value="l" onclick="key(id,'text')">l</button>
+          <button class="col-1 btn-success rounded" id=";" value=";" onclick="key(id,'text')">;</button>
+          <button class="col-1 btn-dark rounded" id="'" value="'" onclick="key(id,'text')">'</button>
+        </div>
+        <div class="row btn-group-horizontal m-1">
+          <button class="col-1 btn-danger rounded" id="&gt;" value="&gt;" onclick="key(id,'text')">&gt;</button>
+          <button class="col-1 btn-danger rounded" id="&lt;" value="&lt;" onclick="key(id,'text')">&lt;</button>
+          <button class="col-1 btn-danger rounded" id="z" value="z" onclick="key(id,'text')">z</button>
+          <button class="col-1 btn-danger rounded" id="x" value="x" onclick="key(id,'text')">x</button>
+          <button class="col-1 btn-danger rounded" id="c" value="c" onclick="key(id,'text')">c</button>
+          <button class="col-1 btn-danger rounded" id="v" value="v" onclick="key(id,'text')">v</button>
+          <button class="col-1 btn-info rounded" id="b" value="b" onclick="key(id,'text')">b</button>
+          <button class="col-1 btn-info rounded" id="n" value="n" onclick="key(id,'text')">n</button>
+          <button class="col-1 btn-info rounded" id="m/" value="m" onclick="key(id,'text')">m</button>
+          <button class="col-1 btn-success rounded" id="," value="," onclick="key(id,'text')">,</button>
+          <button class="col-1 btn-success rounded" id="." value="." onclick="key(id,'text')">.</button>
+          <button class="col-1 btn-success rounded" id="/" value="/" onclick="key(id,'text')">/</button>
+        </div>
+        <div class="row btn-group-horizontal m-1">
+          <button class="col-1 btn-dark rounded" id="-" value="-" onclick="key(id,'text')">-</button>
+          <button class="col-1 btn-info rounded" id="|" value="|" onclick="key(id,'text')">|</button>
+          <button class="col-1 btn-info rounded" id="sup" value="sup" onclick="key(id,'text')">x<sup>x</sup></button>
+          <button class="col-5 btn-primary rounded" id="space" value="&nbsp;" onclick="key(id,'text')">space</button>
+          <button class="col-1 btn-info rounded" id="sub" value="sub" onclick="key(id,'text')">x<sub>x</sub></button>
+          <button class="col-1 btn-dark rounded" id="{" value="{" onclick="key(id,'text')">{</button>
+          <button class="col-1 btn-info rounded" id="}" value="}" onclick="key(id,'text')">}</button>
+          <button class="col-1 btn-info rounded"  id="more" value="" onclick="more(id)">more..</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{#if edit}}
+{{#each resp}}
+<input type="text" id="subb" class="invisible" style="height: 1px;width: 1px;" value="{{this.subject}}">
+<input type="text" id="cdd" class="invisible" style="height: 1px;width: 1px;" value="{{this.code}}">
+<input type="text" id="y" style="height: 1px;width: 1px;" class="invisible" value="{{this.year}}">
+<input type="text" id="moo" style="height: 1px;width: 1px;" class="invisible" value="{{this.mon}}">
+<input type="text" id="d" style="height: 1px;width: 1px;" class="invisible" value="{{this.day}}">
+<input type="text" id="h" style="height: 1px;width: 1px;" class="invisible" value="{{this.ho}}">
+<input type="text" id="mii" style="height: 1px;width: 1px;" class="invisible" value="{{this.min}}">
+<input type="text" id="s" style="height: 1px;width: 1px;" class="invisible" value="{{this.sec}}">
+{{/each}}
+{{/if}}
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Question Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Name of The test</label>
+          <input type="text" class="form-control" id="username" placeholder="Test name" name='Testname'>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Question Code</label>
+          <input type="text" class="form-control" id="password" placeholder="question code">
+        </div>
+        <label for="exampleInputPassword1">Date and Time of Test (Click PM if needed)</label>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="yea" placeholder="year">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="mo" placeholder="month">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="da" placeholder="day">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="hou" placeholder="hours">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="mi" placeholder="min">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="se" placeholder="sec">
+          </div>
+          <button class="btn btn-secondary rounded" id="pm" onclick="pm()">PM</button>
+        </div>
+        <label for="exampleInputPassword1">Test ending date and time </label>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="yeaaa" placeholder="year">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="mooo" placeholder="month">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="daaa" placeholder="day">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="houuu" placeholder="hours">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="miiii" placeholder="min">
+          </div>
+          <button class="btn btn-secondary rounded" id="pm1" onclick="pm1()">PM</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="conv()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function s() {
+    var iframe = document.getElementById('sk');
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var img = innerDoc.getElementById('sketchpad').toDataURL()
+    var e = document.getElementById('text').innerHTML
+    document.getElementById('text').innerHTML = e + '<img src=' + img + ' alt="no" style="height:3rem;width:3rem;">'
+  }
+</script>
+<!-- Button trigger modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Draw Something...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe src="/sketch" frameborder="0" id="sk" scrolling="no" height="350" width="400" class="ml-0 pl-0">
+        </iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="s()" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--keyboard settings-->
+<div class="modal fade" id="symbols" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Common symbols</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row btn-group-horizontal">
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&alpha"
+            value="&alpha;">&alpha;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&delta"
+            value="&delta;">&delta;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&nu" value="&nu;">&nu;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&gama"
+            value="&gamma;">&gamma;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&beta" value="&beta;">&beta;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&kappa"
+            value="&kappa;">&kappa;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&api" value="&pi;">&pi;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&" value="&amp;">&amp;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&at" value="@">@</button>
+        </div>
+        <div class="row btn-group-horizontal">
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&plusmn"
+            value="&plusmn;">&plusmn;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&micro"
+            value="&micro;">&micro;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&forall"
+            value="&forall;">&forall;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&sum" value="&sum;">&sum;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&isin" value="&isin;">&isin;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&notin"
+            value="&notin;">&notin;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&infin"
+            value="&infin;">&infin;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&angle"
+            value="&angle;">&angle;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&prop" value="&prop;">&prop;</button>
+        </div>
+        <div class="row btn-group-horizontal">
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&radic"
+            value="&radic;">&radic;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&int" value="&int;">&int;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&sim" value="&sim;">&sim;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&cong"
+            value="&cong;">&cong;;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&sup" value="&sup;">&sup;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&sub" value="&sub;">&sub;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&le" value="&le;">&le;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&ge" value="&ge;">&ge;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&perp" value="&perp;">&perp;</button>
+        </div>
+        <div class="row btn-group-horizontal">
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&mu" value="&mu;">&mu;;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&rho" value="&rho;">&rho;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&sigma"
+            value="&sigma;">&sigma;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&eta" value="&eta;">&eta;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&psi" value="&psi;">&psi;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&omega"
+            value="&omega;">&omega;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&theta"
+            value="&theta;">&theta;</button>
+          <button class="btn-secondary rounded col-1" onclick="key(id,'text')" id="&Omega"
+            value="&Omega;">&Omega;</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<!--table-->
+<div class="modal fade" id="table" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">How much rows?? &amp; Col's??</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="col-6 btn-dark rounded " placeholder="no: of rows" id='rows' value="">(horizontal)
+        <input type="text" class="col-6 btn-dark rounded mt-1" placeholder="no:of columns" id="cols" value="">(vertical)
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" onclick="table('text')" data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--language-->
+<div class="modal fade" id="language" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Select your language</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body btn-group-horizontal">
+        <button class="btn btn-info rounded" onclick="langu('hindi')" data-dismiss="modal">Hindi</button>
+        <button class="btn btn-info rounded" onclick="langu('malayalam')" data-dismiss="modal">Malayalam</button>
+        <button class="btn btn-info rounded" onclick="langu('default')" data-dismiss="modal">Default(English)</button>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<!--pic-->
+<div class="modal fade" id="pic" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Draw Something...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
+        </p>
+        <p><label for="file" style="cursor: pointer;" class="btn btn-info rounded">Click here to Upload an Image</label></p>
+        <p><img id="output" width="200" /></p>
+        <h2>Here is your image..</h2>
+        <canvas height="" width="" id="can">no</canvas>
+        <script>
+          var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+          };
+        </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="stt()">Add picture</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<script>
+  function stt(){   
+   var c = document.getElementById('can')
+   var ctx =    c.getContext("2d");
+   var img = document.getElementById('output')
+   c.height = 300
+   c.width = 450
+   ctx.drawImage(img, 0, 0);
+   document.getElementById('text').innerHTML += '<img src='+c.toDataURL('image/jpeg')+' class="col-12" style="height:max-content;">'
+   console.log(c.toDataURL('image/jpeg'))
+  }
+</script>
+<!-- Footer-->
+<footer class="bg-light py-5">
+  <div class="container">
+    <div class="small text-center text-muted">
+      Follow Us On
+      <p>insta twitter facebook lnkkd</p>
+
+      Copyright © 2020 @e_d_i__t_h. Designed &amp; Developed By /\ |= </div>
+  </div>
+</footer>

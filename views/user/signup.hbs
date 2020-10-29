@@ -1,0 +1,65 @@
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">The Slash Project </a>
+    </nav>
+</header>
+<div class="row">
+    <div class="col-md-6 m-auto mt-0 pt-0">
+        <div class="container">
+            <div class="alert alert-danger col-9 invisible"  style="margin-top: 1px;" id='alert' >This username already exists...try another name</div>
+            <form action="/signup" method="POST">
+                <h2 class="text-centre">Create New Account</h2>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" name='username'>
+                        <small id="emailHelp" class="form-text text-muted">Make sure your username is unique...</small>
+                    </div>
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp"
+                        placeholder="Email Id" name='email' onclick="check()">
+                    <small id="emailHelp" class="form-text text-muted">Give Your valid email id.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" onclick="check()" class="form-control" id="password" placeholder="Password" name='password'>
+                    <small id="Help" class="form-text text-muted">This password is not to be shared, Create a strong
+                        one</small>
+                </div>
+                <div class="form-group">
+                    <label for="o">Do you represent any institute or organization</label>
+                    <input type="text" name="org" id="insti" placeholder="Yes/No" class="rounded">
+                </div>
+                <a style="color: blue;" href="/login">Already have an
+                    account??</a>
+                <a   class="btn btn-success rounded mt-1" id='s' onclick="c()">Submit</a>
+                <button type="submit" class="invisible" id='ss'>Click to confirm</button>
+                <div class="form-group" style="width: 1px;height: 1px;">
+                    <input type="text" class="form-control invisible"  name='key' value="0" style="width: 1px;he'1px">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br>
+<script>
+    function check(){
+        console.log('ajx')
+        var i = document.getElementById('username').value
+        $.ajax({
+            url:'admin/checku?name='+i,
+            method:'get',
+            success:(response)=>{
+                console.log(response)
+                if(response.status){
+                    document.getElementById('alert').className ='alert alert-danger col-9 invisible'
+                    document.getElementById('s').disabled = ''
+                }
+                else{
+                 document.getElementById('alert').className ='alert alert-danger col-9 visible'   
+                 document.getElementById('s').disabled = 'disabled'
+                }
+            }
+        })
+    }
+</script>

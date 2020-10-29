@@ -1,0 +1,66 @@
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">The Slash Project </a>
+    </nav>
+</header>
+<div class="row">
+    <div class="col-md-6 m-auto">
+        <div class="container mt-5 pl-5">
+            <h2 class="text-centre" id="head">Enter the code that you recieved in your given email.</h2>
+        
+                <div class="form-group " id='h'>
+                    <label for="exampleInputPassword1">Enter the 6-digit number</label>
+                    <input type="password" class="form-control" id="key" placeholder="code" name='key'>
+                </div>
+                <div class="form-group invisible" id='check'>
+                    <label for="exampleInputPassword1">Enter your new Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name='cdd'>
+                </div>
+                 <input type="text"  id="u" value="{{u}}" class="invisible" name="user">
+                <a  class="btn btn-success " id="ii" onclick="sub()">Submit</a>
+                <a  class="btn btn-success invisible" id="f" onclick="send()">send</button>
+                <a href="/login" class="btn btn-success invisible" id="ff">Go to login page</button>
+
+        </div>
+    </div>
+</div>
+<script>
+    function sub(){
+       var u= document.getElementById('u').value
+       var i = document.getElementById('key').value
+       console.log(i)
+         $.ajax({
+            url: '/forgot?user=' + u+'&id='+i,
+            method: 'get',
+            success: (response) => {
+                console.log(response)
+                if(response.t=='t'){
+                    document.getElementById('head').innerHTML='Now change your password..'
+                    document.getElementById('ii').className='invisible'
+                    document.getElementById('f').className='btn btn-success'
+                    document.getElementById('h').className='invisible'
+                    document.getElementById('check').className='form-group'
+                }
+            }
+        })
+    
+    }
+</script>
+<script>
+    function send(){
+       var u = document.getElementById('u').value
+       var p = document.getElementById('password').value
+       $.ajax({
+           url:'/forgetadd?password='+p+'&user='+u,
+         method:'get',
+         success:(response)=>{
+             console.log('sending')
+             if(response){
+                document.getElementById('ff').className='btn btn-success'
+                document.getElementById('f').className='invisible'
+             }
+         }
+       })
+
+    }
+</script>

@@ -1,0 +1,112 @@
+
+ <header>
+     <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">The Slash Project</a>
+</nav>
+ </header>
+ 
+ <section>
+ <div>
+   <div class="row" style="background-color: tomato;">
+     &nbsp;
+   </div>
+   <div class="row" style="background-color: orangered;">&nbsp;</div>
+   <div class="row" style="background-color: yellow;">&nbsp;</div>
+   <div class="row" style="background-color: #3599;">&nbsp;</div>
+  <div class=" col-md-6 m-auto">
+    <div class="rounded-circle" Align='center'>
+      <div class="form-group">
+         {{#if c}}
+                     <div class="alert alert-danger col-9"  style="margin-top: 1px;" id='demo' >The no of participants is full. Please inform your organizer.</div>
+                    {{/if}}
+                        <label for="exampleInputPassword1">Your name</label>
+                        <input type="text" class="form-control" id="name" placeholder="name" name='name' value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Id no:/ Roll no:</label>
+                    <input type="number" class="form-control" id="roll" placeholder="Roll no:" name='rollno' value="">
+                </div>
+      <a type="submit"  style="align-self: center;" class="btn btn-success" id="status"></a>
+      <a type="button" href="" onclick="go()" style="align-self: center;" class="invisible" id="sta">Click to start test</a>
+      <p>Every Blank Space Is Not Totally Blank</p>
+    </div>
+  </div>
+    <div class="row" style="background-color: indigo;">&nbsp;</div>
+   <div class="row" style="background-color: green;">&nbsp;</div>
+   <div class="row" style="background-color: violet;">&nbsp;</div>
+</div>     
+<textarea  id="year" cols="1" rows="1" class="invisible">{{y}}</textarea>
+<textarea  id="mn" cols="1" rows="1" class="invisible">{{mn}}</textarea>
+<textarea  id="da" cols="1" rows="1" class="invisible">{{d}}</textarea>
+<textarea  id="ho" cols="1" rows="1" class="invisible">{{h}}</textarea>
+<textarea  id="min" cols="1" rows="1" class="invisible">{{m}}</textarea>
+<textarea  id="sec" cols="1" rows="1" class="invisible">{{s}}</textarea>
+
+</section>
+<script>
+  var year = document.getElementById('year').innerHTML 
+  var mon = document.getElementById('mn').innerHTML 
+  var day = document.getElementById('da').innerHTML 
+  var ho = document.getElementById('ho').innerHTML 
+  var min = document.getElementById('min').innerHTML 
+  var sec = document.getElementById('sec').innerHTML 
+  mon = mon-1
+  // Set the date we're counting down to
+  var countDownDate = new Date(year,mon,day,ho,min,sec,0).getTime();
+  console.log(countDownDate)
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+  
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+  
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+    // Display the result in the element with id="demo"
+    document.getElementById("status").innerHTML = "The test starts in: "+days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+  
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("status").className ="invisible";
+      document.getElementById('sta').className ="btn btn-success float-right"  
+    }
+  }, 1000);
+</script>
+<script>
+  function go(){
+    var r = document.getElementById('roll').value
+      var n = document.getElementById('name').value
+      if(r==''||n==''){
+        alert('Please complete the form')
+        
+      }
+      else{
+      console.log(n+r)
+      console.log('go')
+      document.getElementById('sta').href = '/testw?user={{user}}&test={{sub}}&name='+n+'&roll='+r;
+      }
+  }
+</script>
+<footer class="bg-light py-5">
+    <div class="container">
+        <div class="small text-center text-muted">
+           
+
+            Copyright © 2020 theslashproject.com. Designed &amp; Developed By 
+            <pre>
+                                                                      /\   |=====
+                                                                     //\\  | === 
+                                                                     /    \ |      
+            </pre></div>
+    </div>
+</footer>

@@ -1,0 +1,102 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">The Slash Project</a>
+</nav>
+<input type="text" id="t" value="{{total}}" class="invisible">
+<input type="text" id="u" value="{{user}}" class="invisible">
+<input type="text"  id="l" value="{{limit}}" style="height: 1px;width: 1px;" class="invisible">
+<!-- As a heading -->
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1"></span>
+</nav>
+<div class="jumbotron jumbotron-fluid" style="background-color: #e74c3c;">
+    <div class="container">
+        <h1 class="display-4" id='p' >Selected plan</h1>
+
+        <p class="lead" id='pp'>As per your subscribtion you need to pay Rs {{total}}</p>
+        <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Phone no:</label>
+    <input type="text" class="form-control" id="ohone" placeholder="Phone no:">
+  </div>
+        <button class="btn btn-success rounded" onclick="pay()" id="ppp">Click here to pay</button>
+         <a href="/aprofile" class="invisible"  id="pppp">Go to home page</button>
+    </div>
+</div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    function pay() {
+        document.getElementById('p').innerHTML='Starting payment...<i class="fa fa-spinner fa-spin fa-3x fa-fw ml-4"></i><span class="sr-only">Loading...</span>'
+        var u = document.getElementById('u').value
+        var t = document.getElementById('t').value
+        var e = document.getElementById('email').value
+        var p = document.getElementById('ohone').value
+        console.log(u+""+t)
+        $.ajax({
+            url: '/admin/payment?user=' + u + '&total=' + t,
+            method: 'get',
+            success: (response) => {
+                console.log(response)
+                razopayment(response)
+            }
+        })
+        function razopayment(order) {
+            var options = {
+                "key": "rzp_test_mphMKcv6dG6sWD", 
+                "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "The Slash Project",
+                "description": "Test Transaction",
+                "image": "",
+                "order_id": order.id, 
+                "handler": function (response) {
+                    verify(response,order)
+                },
+                "prefill": {
+                    "name": u,
+                    "email": e,
+                    "contact": p
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#1c2e4a"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+        function verify(payment,order){
+            console.log('ajxx')
+            var limit = document.getElementById('l').value
+            $.ajax({
+                url:'/admin/verify',
+                data:{
+                    payment,order
+                },
+                method:'post',
+                success:(response)=>{
+                    if(response.status){
+                       document.getElementById('p').innerHTML='Payment Successfull'
+                       document.getElementById('pp').innerHTML =''
+                       document.getElementById('ppp').className='invisible'
+                       document.getElementById('pppp').className='btn btn-warning rounded'
+                    }
+                    else{
+                      document.getElementById('p').innerHTML='Payment Failed'
+                       document.getElementById('pp').innerHTML =''
+                       document.getElementById('ppp').className='invisible'
+                    }
+                }
+            })
+        }    
+    } 
+   
+</script>
+<script>
+    
+</script>
