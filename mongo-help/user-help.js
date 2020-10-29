@@ -185,5 +185,12 @@ module.exports = {
             response.sug=sug
             resolve(response)
         })
+    },
+    addsugest:(data)=>{
+        return new Promise((resolve,reject)=>{
+        db.get().collection(Collection.suggest).insertOne(data).then((response)=>{
+            resolve()
+        })
+    })
     }
 }
