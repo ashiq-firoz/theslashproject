@@ -5,8 +5,8 @@ const { response } = require('express')
 const Razorpay = require('razorpay')
 const { resolve } = require('path')
 var instance = new Razorpay({
-    key_id: 'rzp_test_mphMKcv6dG6sWD',
-    key_secret: 'b2xpMFgEXZ5sCvIn0oTH7Tw6',
+    key_id: 'testid',
+    key_secret: 'testkey',
 });
 module.exports = {
     doSignup: (userdata) => {
@@ -94,7 +94,7 @@ module.exports = {
     verifypayment: (data) => {
         return new Promise((resolve, reject) => {
             const crypto = require('crypto')
-            let hmac = crypto.createHmac('sha256', 'b2xpMFgEXZ5sCvIn0oTH7Tw6')
+            let hmac = crypto.createHmac('sha256', 'testkey')
             hmac.update(data['payment[razorpay_order_id]'] + '|' + data['payment[razorpay_payment_id]'])
             hmac = hmac.digest('hex')
             if (hmac == data['payment[razorpay_signature]']) {
