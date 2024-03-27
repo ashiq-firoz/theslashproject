@@ -1,5 +1,3 @@
 # theslashproject
-This is a full scale node js project.
-You could call it a web app....
-view this on https://theslashproject.com
+This is a full stack project which is an online examination platform 
 
